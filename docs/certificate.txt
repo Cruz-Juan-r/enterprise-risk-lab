@@ -1,0 +1,20 @@
+$ openssl s_client -connect juane-risk-lab.duckdns.org:443 -servername juane-risk-lab.duckdns.org | openssl x509 -noout -subject -issuer -dates
+subject=CN=juane-risk-lab.duckdns.org
+issuer=C=US, O=Let's Encrypt, CN=YE2
+notBefore=Oct 14 15:24:38 2026 GMT
+notAfter=Jan 12 15:24:37 2027 GMT
+Verify return code: 0 (ok)
+
+$ sudo certbot renew --dry-run
+Congratulations, all simulated renewals succeeded:
+  /etc/letsencrypt/live/juane-risk-lab.duckdns.org/fullchain.pem (success)
+
+$ curl -I http://juane-risk-lab.duckdns.org/api/risk-status
+HTTP/1.1 301 Moved Permanently
+Location: https://juane-risk-lab.duckdns.org/api/risk-status
+
+$ curl -s -o /dev/null -w '%{http_code}' https://juane-risk-lab.duckdns.org/api/risk-status
+401
+
+$ curl --connect-timeout 5 http://juane-risk-lab.duckdns.org:8080/
+connection failed: port 8080 is not reachable from the internet

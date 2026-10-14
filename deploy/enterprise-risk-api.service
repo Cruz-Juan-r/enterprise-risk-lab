@@ -1,0 +1,17 @@
+[Unit]
+Description=Enterprise Risk API
+After=network.target
+
+[Service]
+User=riskapi
+WorkingDirectory=/opt/enterprise-risk-api
+Environment="AUTH0_ISSUER_URI=https://dev-d6h1xipnfpe8pv51.us.auth0.com/"
+Environment="AUTH0_AUDIENCE=https://enterprise-risk-api"
+Environment="CORS_ALLOWED_ORIGINS=https://juane-risk-lab.duckdns.org"
+# Listen only on loopback: Apache is the only public entry point
+Environment="SERVER_ADDRESS=127.0.0.1"
+ExecStart=/usr/bin/java -jar /opt/enterprise-risk-api/app.jar
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

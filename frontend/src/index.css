@@ -1,0 +1,23 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 2rem;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+button {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+pre {
+  background: #f4f4f4;
+  padding: 1rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
